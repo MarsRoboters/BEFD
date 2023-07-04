@@ -34,3 +34,26 @@ features$Total_MarkDown <- rowSums(features[, c('MarkDown1', 'MarkDown2'
                                                   , 'MarkDown3', 'MarkDown4', 'MarkDown5')], na.rm = TRUE)
 head(features)
 
+
+
+# ---------------------------------------------------
+# Data Transformation
+# ---------------------------------------------------
+
+# Convert Date column into DateTime format
+features$Date <- as.Date(features$Date)
+
+# Sort the datasets by 'Date'
+features <- features %>% arrange(Date)
+
+
+# Set 'Date' as the index 
+features <- features[order(features$Date), ]
+rownames(features) <- NULL
+
+# Filling missing values
+features[is.na(features)] <- 0
+
+#Reset index
+features <- data.frame(Date = features$Date, features)
+

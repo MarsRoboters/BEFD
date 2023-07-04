@@ -78,3 +78,21 @@ train$WeekOfYear <- format(train$Date, '%V')
 # ---------------------------------------------------
 # Data Transformation
 # ---------------------------------------------------
+
+# Convert Date column into DateTime format
+train$Date <- as.Date(train$Date)
+
+# Sort of Datasets by 'Date'
+train <- train %>% arrange(Date)
+
+# Set 'Date' as the index 
+train <- train[order(train$Date), ]
+rownames(train) <- NULL
+
+# Filling missing values
+train[is.na(train)] <- 0
+
+#Reset index
+train <- data.frame(Date = train$Date, train)
+
+head(train)

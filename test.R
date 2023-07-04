@@ -46,3 +46,26 @@ test <- merge(test, stores, by = "Store", all.x = TRUE)
 test <- merge(test, features, by = c("Store", "Date"), all.x = TRUE)
 
 head(test)
+
+
+# ---------------------------------------------------
+# Data Transformation
+# ---------------------------------------------------
+
+# Convert Date column into DateTime format
+test$Date <- as.Date(test$Date)
+
+# Sort the datasets by 'Date'
+test <- test %>% arrange(Date)
+
+# Set 'Date' as the index 
+test <- test[order(test$Date), ]
+rownames(test) <- NULL
+
+# Filling missing values
+test[is.na(test)] <- 0
+
+#Reset index
+test <- data.frame(Date = test$Date, test)
+
+head(test)
