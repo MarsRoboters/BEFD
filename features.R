@@ -14,6 +14,8 @@ summary(features)
 cat("\nMissing Values:\n")
 print(colSums(is.na(features)))
 
+print(!is.na(features$Temperature))
+
 # ---------------------------------------------------
 # Feature Engineering
 # ---------------------------------------------------
