@@ -57,3 +57,9 @@ features[is.na(features)] <- 0
 #Reset index
 features <- data.frame(Date = features$Date, features)
 
+# ---------------------------------------------------
+# EDA (Exploratory Data Analysis)
+# ---------------------------------------------------
+
+cat('\nFeatures.csv columns:')
+print(colnames(features))

@@ -96,3 +96,18 @@ train[is.na(train)] <- 0
 train <- data.frame(Date = train$Date, train)
 
 head(train)
+
+# ---------------------------------------------------
+# EDA (Exploratory Data Analysis)
+# ---------------------------------------------------
+
+cat('\ntrain.csv columns:')
+print(colnames(train))
+
+# Distribution of Weekly sales
+ggplot(train, aes(x = Weekly_Sales)) +
+      geom_histogram(color = "black", fill = "lightblue", bins = 1000) +
+      geom_density(alpha = 0.5, fill = "blue") +
+      labs(title = "Distribution of Weekly Sales",
+           x = "Weekly Sales",
+           y = "Count")
